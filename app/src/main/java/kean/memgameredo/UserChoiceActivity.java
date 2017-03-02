@@ -12,7 +12,7 @@ import static kean.memgameredo.R.id.a0;
 
 public class UserChoiceActivity extends AppCompatActivity {
 
-    public int gameSize;
+    public static int gameSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +31,8 @@ public class UserChoiceActivity extends AppCompatActivity {
                 gameSize = 4;
                 ImageButton a0;
                 a0 = (ImageButton) findViewById(R.id.a0);
-
                 Intent i = new Intent(UserChoiceActivity.this, MemoryGameActivity.class);
-
-//
-                //i.putExtra("Size", gameSize);
-                //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
             }
         });
@@ -140,6 +136,8 @@ public class UserChoiceActivity extends AppCompatActivity {
         });
 
     }
+
+    public static int getSize() { return gameSize;}
 
 
 }

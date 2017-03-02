@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserChoiceActivity" />
-        <activity android:name=".MemoryGameActivity"></activity>
+        <activity android:name=".MemoryGameActivity" />
+        <activity android:name=".HighScoreActivity"></activity>
     </application>
 
 </manifest>
