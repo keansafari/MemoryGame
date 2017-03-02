@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_high_score"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_high_score">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:text="High Scores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
-        android:id="@+id/highScoreText" />
-
-    <TextView
-        android:text="1. ABC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/highScoreText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:id="@+id/firstHighScore" />
-
-    <TextView
-        android:text="2. ABC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/firstHighScore"
-        android:layout_alignLeft="@+id/firstHighScore"
-        android:layout_alignStart="@+id/firstHighScore"
-        android:layout_marginTop="18dp"
-        android:id="@+id/secondHighScore" />
-
-    <TextView
-        android:text="3. ABC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/secondHighScore"
-        android:layout_alignRight="@+id/secondHighScore"
-        android:layout_alignEnd="@+id/secondHighScore"
-        android:layout_marginTop="23dp"
-        android:id="@+id/thirdHighScore" />
-</RelativeLayout>
+</LinearLayout>
