@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Memory Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/gameTitle"
+        android:typeface="sans"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="40sp" />
+
+    <Button
+        android:text="Start Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="140dp"
+        android:onClick="startNewGame"
+        android:id="@+id/menuStartGameButton" />
+
+    <Button
+        android:text="♫"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="33dp"
+        android:id="@+id/menuMusicToggleButton"
+        android:textSize="30sp"
+        android:textAlignment="gravity"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="High Scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuHighScoreButton"
+        android:layout_above="@+id/menuMusicToggleButton"
+        android:layout_alignLeft="@+id/menuStartGameButton"
+        android:layout_alignStart="@+id/menuStartGameButton" />
+
+</RelativeLayout>
