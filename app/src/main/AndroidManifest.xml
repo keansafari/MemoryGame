@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".UserChoiceActivity" />
         <activity android:name=".MemoryGameActivity" />
-        <activity android:name=".HighScoreActivity"></activity>
+        <activity android:name=".HighScoreActivity" />
+        <activity android:name=".UserChoiceHighScoreActivity" />
+        <activity android:name=".CreateHighScoreActivity"></activity>
     </application>
 
 </manifest>

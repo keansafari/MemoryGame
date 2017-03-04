@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:text="Congrats!\nYou set a new\nHigh Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:text="Enter 3 characters:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:textColor="?android:attr/colorActivatedHighlight" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/saltbae"
+        android:id="@+id/imageView"
+        android:layout_marginTop="82dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignRight="@+id/returnToMenu"
+        android:layout_alignEnd="@+id/returnToMenu" />
+
+    <Button
+        android:text="Return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/returnToMenu"
+        android:layout_above="@+id/usersName"
+        android:layout_alignLeft="@+id/createHSButton"
+        android:layout_alignStart="@+id/createHSButton"
+        android:textSize="12sp" />
+
+    <Button
+        android:text="Create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createHSButton"
+        android:layout_marginBottom="19dp"
+        android:textSize="12sp"
+        android:layout_above="@+id/returnToMenu"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapCharacters|textCapWords|textPersonName"
+        android:layout_marginBottom="19dp"
+        android:id="@+id/usersName"
+        android:textSize="22sp"
+        android:maxLength="3"
+        android:textAlignment="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:textStyle="normal|bold" />
+
+</RelativeLayout>

@@ -2,24 +2,17 @@ package kean.memgameredo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Stack;
-
-import static kean.memgameredo.R.id.tryAgainButton;
 
 
 public class MemoryGameActivity extends AppCompatActivity {
@@ -80,9 +73,10 @@ public class MemoryGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memory_game);
 
 
+
         MemoryGame list = new MemoryGame(UserChoiceActivity.getSize());
 
-        //creates local copy of arraylist for simplicity
+        //creates local copy of arraylist just to make it easier to use throughout the class
         final ArrayList<String> wordBoard = list.getBoard();
 
         //builds board: proper number of as and hides proper words underneath
@@ -90,6 +84,8 @@ public class MemoryGameActivity extends AppCompatActivity {
 
         matchOne = "";
         matchTwo = "";
+
+        //Declaring all the buttons
 
         final ImageButton a0 = (ImageButton) findViewById(R.id.a0);
         final ImageButton a1 = (ImageButton) findViewById(R.id.a1);
@@ -139,6 +135,8 @@ public class MemoryGameActivity extends AppCompatActivity {
 
 
 
+        //Functional Action Buttons
+
         newGameButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +147,7 @@ public class MemoryGameActivity extends AppCompatActivity {
         endGameButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MemoryGameActivity.this, UserChoiceActivity.class));
+                startActivity(new Intent(MemoryGameActivity.this, MainActivity.class));
             }
         });
 
@@ -157,6 +155,8 @@ public class MemoryGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buildMemoryBoard(UserChoiceActivity.getSize(), wordBoard);
+                final ImageView yaoming = (ImageView) findViewById(R.id.yaoming);
+                yaoming.setVisibility(View.INVISIBLE);
                 reactivateEveryButton();
                 setAllWordsInvisible();
             }
@@ -168,6 +168,8 @@ public class MemoryGameActivity extends AppCompatActivity {
                 setAllWordsVisible();
             }
         });
+
+        //Action Buttons for Grid
 
         // a0 clicked - show a0
         a0.setOnClickListener(new OnClickListener() {
@@ -573,6 +575,15 @@ public class MemoryGameActivity extends AppCompatActivity {
 
     }
 
+
+
+    public boolean checkIfHighScore() {
+        if (score > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public void reactivateEveryButton() {
         final Button tryAgainButton = (Button) findViewById(R.id.tryAgainButton);
         final Button newGameButton = (Button) findViewById(R.id.newGameButton);
@@ -623,9 +634,13 @@ public class MemoryGameActivity extends AppCompatActivity {
     }
 
     public void youLose() {
+        setCardsInvisible();
+        setAllWordsInvisible();
+        final ImageView yaoming = (ImageView) findViewById(R.id.yaoming);
+        yaoming.setVisibility(View.VISIBLE);
         updateScore();
         Context context = getApplicationContext();
-        CharSequence text = "You Messed Up :(\nClick Try Again!";
+        CharSequence text = "You Messed Up LOL\nClick Try Again!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
@@ -637,18 +652,24 @@ public class MemoryGameActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        startActivity(new Intent(MemoryGameActivity.this, HighScoreActivity.class));
+        boolean highScoreCheck = checkIfHighScore();
+
+        //if high score, then create high score - else go back to main menu
+        if (highScoreCheck)
+            startActivity(new Intent(MemoryGameActivity.this, CreateHighScoreActivity.class));
+        else
+            startActivity(new Intent(MemoryGameActivity.this, MainActivity.class));
 
     }
 
     public boolean checkMatch() {
 
-        //if not ready to check
+        //if not ready to check because we don't have two words
         if (matchTwo.equals(""))
             return true;
 
-        //if we have two strings ready
-        //if user is right
+
+        //if user is correct
         if (matchOne.equals(matchTwo)) {
             counter++;
             score += 2;
@@ -657,6 +678,7 @@ public class MemoryGameActivity extends AppCompatActivity {
             matchTwo = "";
             if(counter == UserChoiceActivity.getSize()/2) {
                 youWin();
+                return true;
             }
             return true;
         }
@@ -867,7 +889,7 @@ public class MemoryGameActivity extends AppCompatActivity {
 
     }
 
-    public void setAllCardsVisible() {
+    public void setCardsInvisible() {
         final ImageButton a0 = (ImageButton) findViewById(R.id.a0);
         final ImageButton a1 = (ImageButton) findViewById(R.id.a1);
         final ImageButton a2 = (ImageButton) findViewById(R.id.a2);
@@ -888,26 +910,26 @@ public class MemoryGameActivity extends AppCompatActivity {
         final ImageButton a17 = (ImageButton) findViewById(R.id.a17);
         final ImageButton a18 = (ImageButton) findViewById(R.id.a18);
         final ImageButton a19 = (ImageButton) findViewById(R.id.a19);
-        a0.setVisibility(View.VISIBLE);
-        a1.setVisibility(View.VISIBLE);
-        a2.setVisibility(View.VISIBLE);
-        a3.setVisibility(View.VISIBLE);
-        a4.setVisibility(View.VISIBLE);
-        a5.setVisibility(View.VISIBLE);
-        a6.setVisibility(View.VISIBLE);
-        a7.setVisibility(View.VISIBLE);
-        a8.setVisibility(View.VISIBLE);
-        a9.setVisibility(View.VISIBLE);
-        a10.setVisibility(View.VISIBLE);
-        a11.setVisibility(View.VISIBLE);
-        a12.setVisibility(View.VISIBLE);
-        a13.setVisibility(View.VISIBLE);
-        a14.setVisibility(View.VISIBLE);
-        a15.setVisibility(View.VISIBLE);
-        a16.setVisibility(View.VISIBLE);
-        a17.setVisibility(View.VISIBLE);
-        a18.setVisibility(View.VISIBLE);
-        a19.setVisibility(View.VISIBLE);
+        a0.setVisibility(View.INVISIBLE);
+        a1.setVisibility(View.INVISIBLE);
+        a2.setVisibility(View.INVISIBLE);
+        a3.setVisibility(View.INVISIBLE);
+        a4.setVisibility(View.INVISIBLE);
+        a5.setVisibility(View.INVISIBLE);
+        a6.setVisibility(View.INVISIBLE);
+        a7.setVisibility(View.INVISIBLE);
+        a8.setVisibility(View.INVISIBLE);
+        a9.setVisibility(View.INVISIBLE);
+        a10.setVisibility(View.INVISIBLE);
+        a11.setVisibility(View.INVISIBLE);
+        a12.setVisibility(View.INVISIBLE);
+        a13.setVisibility(View.INVISIBLE);
+        a14.setVisibility(View.INVISIBLE);
+        a15.setVisibility(View.INVISIBLE);
+        a16.setVisibility(View.INVISIBLE);
+        a17.setVisibility(View.INVISIBLE);
+        a18.setVisibility(View.INVISIBLE);
+        a19.setVisibility(View.INVISIBLE);
     }
 
     public void resetBoard() {

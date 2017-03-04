@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button startButton = (Button) findViewById(R.id.menuStartGameButton);
+        Button menuHighScoreButton = (Button) findViewById(R.id.menuHighScoreButton);
 
         //  Action Listener: new game button
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+        //  Action Listener: view high scores -> goes to high score selection menu (# of cards)
+        menuHighScoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, UserChoiceHighScoreActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         //In charge of toggling music
         final MediaPlayer gameSong = MediaPlayer.create(MainActivity.this, R.raw.puzzle_song);
