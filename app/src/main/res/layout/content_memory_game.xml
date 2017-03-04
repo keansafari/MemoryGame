@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/yaoming"
-        android:background="@drawable/yaoming"
-        android:layout_alignParentTop="true"
-        android:visibility="invisible" />
-
     <Button
         android:text="Try Again"
         android:layout_width="wrap_content"
@@ -599,5 +591,13 @@
         android:layout_above="@+id/scoreText"
         android:layout_alignLeft="@+id/scoreText"
         android:layout_alignStart="@+id/scoreText" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yaoming"
+        android:background="@drawable/yaoming"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>
