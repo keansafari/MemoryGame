@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //In charge of toggling music
-        final MediaPlayer gameSong = MediaPlayer.create(MainActivity.this, R.raw.puzzle_song);
+        final MediaPlayer gameSong = MediaPlayer.create(MainActivity.this, R.raw.darudesandstorm);
         gameSong.setLooping(true);
         gameSong.start();
         final ToggleButton toggleMusic = (ToggleButton) findViewById(R.id.menuMusicToggleButton);

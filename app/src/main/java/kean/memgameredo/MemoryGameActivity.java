@@ -2,6 +2,7 @@ package kean.memgameredo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -156,7 +157,7 @@ public class MemoryGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 buildMemoryBoard(UserChoiceActivity.getSize(), wordBoard);
                 final ImageView yaoming = (ImageView) findViewById(R.id.yaoming);
-                yaoming.setVisibility(View.INVISIBLE);
+                //yaoming.setVisibility(View.INVISIBLE);
                 reactivateEveryButton();
                 setAllWordsInvisible();
             }
@@ -634,16 +635,22 @@ public class MemoryGameActivity extends AppCompatActivity {
     }
 
     public void youLose() {
-        setCardsInvisible();
-        setAllWordsInvisible();
+        //setCardsInvisible();
+        //setAllWordsInvisible();
         final ImageView yaoming = (ImageView) findViewById(R.id.yaoming);
         yaoming.setVisibility(View.VISIBLE);
-        updateScore();
         Context context = getApplicationContext();
-        CharSequence text = "You Messed Up LOL\nClick Try Again!";
         int duration = Toast.LENGTH_SHORT;
+        CharSequence text = "You Messed Up LOL\nClick Try Again!";
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        updateScore();
+        new Handler().postDelayed(new Runnable() {
+                                      @Override
+                                      public void run() {
+                                          yaoming.setVisibility(View.INVISIBLE);
+                                      }
+                                  }, 2 * 1000);
     }
 
     public void youWin() {
@@ -667,7 +674,6 @@ public class MemoryGameActivity extends AppCompatActivity {
         //if not ready to check because we don't have two words
         if (matchTwo.equals(""))
             return true;
-
 
         //if user is correct
         if (matchOne.equals(matchTwo)) {

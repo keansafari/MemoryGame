@@ -30,6 +30,8 @@ public class CreateHighScoreActivity extends AppCompatActivity {
                 userName = usersName.getText().toString();
                 highScoreSavedToast();
                 Intent i = new Intent(CreateHighScoreActivity.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }
         });
@@ -40,6 +42,8 @@ public class CreateHighScoreActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(CreateHighScoreActivity.this, MainActivity.class);
                 highScoreNotSavedToast();
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }
         });
