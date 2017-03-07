@@ -2,6 +2,7 @@ package kean.memgameredo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,13 +68,16 @@ public class MemoryGameActivity extends AppCompatActivity {
     private int counter = 0;
     private String matchOne, matchTwo;
     private boolean match;
+    private String header;
+    private String[] possibelSizes = {"fourCards_","sixCards_","eightCards_","tenCards_","twelveCards_","fourteenCards_",
+            "sixteenCards_","eighteenCards_","twentyCards_"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_game);
 
-
+        setHeader();
 
         MemoryGame list = new MemoryGame(UserChoiceActivity.getSize());
 
@@ -579,7 +583,9 @@ public class MemoryGameActivity extends AppCompatActivity {
 
 
     public boolean checkIfHighScore() {
-        if (score > 0) {
+        SharedPreferences prefs = getSharedPreferences("scores",0);
+        int lowestScore = prefs.getInt(header + "thirdScore", 0);
+        if (score >= lowestScore) {
             return true;
         }
         return false;
@@ -662,11 +668,14 @@ public class MemoryGameActivity extends AppCompatActivity {
         boolean highScoreCheck = checkIfHighScore();
 
         //if high score, then create high score - else go back to main menu
-        if (highScoreCheck)
-            startActivity(new Intent(MemoryGameActivity.this, CreateHighScoreActivity.class));
-        else
+        Intent toHighScore = new Intent(MemoryGameActivity.this, CreateHighScoreActivity.class);
+        if (highScoreCheck) {
+            toHighScore.putExtra("gameScore", score);
+            startActivity(toHighScore);
+            //startActivity(new Intent(MemoryGameActivity.this, CreateHighScoreActivity.class));
+        } else {
             startActivity(new Intent(MemoryGameActivity.this, MainActivity.class));
-
+        }
     }
 
     public boolean checkMatch() {
@@ -1023,6 +1032,40 @@ public class MemoryGameActivity extends AppCompatActivity {
         a17.setClickable(false);
         a18.setClickable(false);
         a19.setClickable(false);
+    }
+
+    public void setHeader() {
+        int size = UserChoiceActivity.getSize();
+        //header = possibelSizes[(size/4)];
+        switch (size) {
+            case 4:
+                header = possibelSizes[0];
+                break;
+            case 6:
+                header = possibelSizes[1];
+                break;
+            case 8:
+                header = possibelSizes[2];
+                break;
+            case 10:
+                header = possibelSizes[3];
+                break;
+            case 12:
+                header = possibelSizes[4];
+                break;
+            case 14:
+                header = possibelSizes[5];
+                break;
+            case 16:
+                header = possibelSizes[6];
+                break;
+            case 18:
+                header = possibelSizes[7];
+                break;
+            case 20:
+                header = possibelSizes[8];
+                break;
+        }
     }
 
 }
